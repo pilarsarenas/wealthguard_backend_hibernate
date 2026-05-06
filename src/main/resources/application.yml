@@ -4,13 +4,13 @@ spring:
   application:
     name: wealthward_backend
   datasource:
-        url: ${MYSQL_DATABASE_URL}
-        username: ${MYSQL_DATABASE_USERNAME}
-        password: ${MYSQL_DATABASE_PASSWORD}
+        url: jdbc:mysql://localhost:3306/wealthguard
+        username: root
+        password: admin
 
   jpa:
     hibernate:
-      ddl-auto: ${HIBERNATE_DDL_AUTO}
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
