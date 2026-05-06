@@ -8,9 +8,9 @@ import io.swagger.v3.oas.annotations.info.Info;
 
 @OpenAPIDefinition(
 		info = @Info(
-				title = "API de Wealthward",
+				title = "API de wealthguard",
 				version = "1.0.0",
-				description = "Documentación de la API de Wealthward"
+				description = "Documentación de la API de wealthguard"
 		)
 )
 @SpringBootApplication

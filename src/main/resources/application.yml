@@ -2,7 +2,7 @@ spring:
   main:
     allow-circular-references: true
   application:
-    name: wealthward_backend
+    name: wealthguard_backend
   datasource:
         url: ${MYSQL_DATABASE_URL}
         username: ${MYSQL_DATABASE_USERNAME}
