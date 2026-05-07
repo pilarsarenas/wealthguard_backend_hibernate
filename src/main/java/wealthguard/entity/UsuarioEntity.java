@@ -114,14 +114,6 @@ public class UsuarioEntity {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public LocalDateTime getFechaBloqueo() {
-        return fechaBloqueo;
-    }
-
-    public void setFechaBloqueo(LocalDateTime fechaBloqueo) {
-        this.fechaBloqueo = fechaBloqueo;
-    }
-
     public Boolean getEsAdmin() {
         return esAdmin;
     }
