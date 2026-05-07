@@ -38,11 +38,17 @@ public class UsuarioEntity {
     @Column(name = "fecha_registro", nullable = false)
     private LocalDateTime fechaRegistro;
 
-     @Column(name = "fecha_bloqueo", nullable = true)
-    private LocalDateTime fechaBloqueo;
-
     @Column(name = "es_admin", nullable = false)
     private Boolean esAdmin;
+
+    @Column(name = "contador_intentos", nullable = false)
+    private Integer contadorIntentos;
+
+    @Column(name = "pregunta_seguridad", nullable = false)
+    private String preguntaSeguridad;
+
+    @Column(name = "respuesta_seguridad", nullable = false)
+    private String respuestaSeguridad;
 
     public Integer getId() {
         return id;
