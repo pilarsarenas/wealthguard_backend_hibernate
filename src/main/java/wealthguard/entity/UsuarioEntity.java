@@ -122,6 +122,30 @@ public class UsuarioEntity {
         this.esAdmin = esAdmin;
     }
 
+    public Integer getContadorIntentos() {
+        return contadorIntentos;
+    }
+
+    public void setContadorIntentos(Integer contadorIntentos) {
+        this.contadorIntentos = contadorIntentos;
+    }
+
+    public String getPreguntaSeguridad() {
+        return preguntaSeguridad;
+    }
+
+    public void setPreguntaSeguridad(String preguntaSeguridad) {
+        this.preguntaSeguridad = preguntaSeguridad;
+    }
+
+    public String getRespuestaSeguridad() {
+        return respuestaSeguridad;
+    }
+
+    public void setRespuestaSeguridad(String respuestaSeguridad) {
+        this.respuestaSeguridad = respuestaSeguridad;
+    }
+
     
 
 }
