@@ -50,6 +50,12 @@ public class UsuarioEntity {
     @Column(name = "respuesta_seguridad", nullable = false)
     private String respuestaSeguridad;
 
+    @Column(name = "foto_perfil", nullable = true)
+    private String fotoPerfil; // Ruta a la imagen o Base64
+
+    @Column(name = "fecha_ultimo_cambio_password")
+    private LocalDateTime fechaUltimoCambioPassword;
+
     public Integer getId() {
         return id;
     }
@@ -146,6 +152,20 @@ public class UsuarioEntity {
         this.respuestaSeguridad = respuestaSeguridad;
     }
 
-    
+    public String getFotoPerfil() {
+        return fotoPerfil;
+    }
+
+    public void setFotoPerfil(String fotoPerfil) {
+        this.fotoPerfil = fotoPerfil;
+    }
+
+    public LocalDateTime getFechaUltimoCambioPassword() {
+        return fechaUltimoCambioPassword;
+    }
+
+    public void setFechaUltimoCambioPassword(LocalDateTime fechaUltimoCambioPassword) {
+        this.fechaUltimoCambioPassword = fechaUltimoCambioPassword;
+    }
 
 }
