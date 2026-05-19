@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import org.springframework.web.bind.annotation.RequestBody;
 import wealthguard.dto.TransaccionRequestDTO;
 import wealthguard.dto.TransaccionResponseDTO;
 import wealthguard.service.ITransaccionService;
@@ -36,6 +35,11 @@ public class TransaccionController {
             @RequestParam(required = false) Double cantidad,
             @RequestParam(required = false) String descripcion) {
         return transaccionService.listarTransacciones(idUsuario, fechaInicio, fechaFin, idCategoria, tipo, cantidad, descripcion);
+    }
+
+    @GetMapping("/listar-todas/{idUsuario}")
+    public List<TransaccionResponseDTO> listarTodasPorUsuario(@PathVariable Integer idUsuario) {
+        return transaccionService.listarTodasPorUsuario(idUsuario);
     }
 
     @PostMapping("/crear")
