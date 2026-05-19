@@ -1,6 +1,7 @@
 package wealthguard.service;
 
 import wealthguard.entity.UsuarioEntity;
+import wealthguard.exception.UsuarioException;
 
 public interface IUsuarioService {
 
