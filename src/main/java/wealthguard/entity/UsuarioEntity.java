@@ -51,10 +51,19 @@ public class UsuarioEntity {
     private String respuestaSeguridad;
 
     @Column(name = "foto_perfil", nullable = true)
-    private String fotoPerfil; // Ruta a la imagen o Base64
+    private String fotoPerfil;
 
     @Column(name = "fecha_ultimo_cambio_password")
     private LocalDateTime fechaUltimoCambioPassword;
+
+    @Column(name = "cuenta_bloqueada", nullable = false)
+    private Boolean cuentaBloqueada = false;
+
+    @Column(name = "fecha_baja", nullable = true)
+    private LocalDateTime fechaBaja;
+
+    @Column(name = "activo", nullable = false)
+    private Boolean activo = true;
 
     public Integer getId() {
         return id;
@@ -166,6 +175,30 @@ public class UsuarioEntity {
 
     public void setFechaUltimoCambioPassword(LocalDateTime fechaUltimoCambioPassword) {
         this.fechaUltimoCambioPassword = fechaUltimoCambioPassword;
+    }
+
+    public Boolean getCuentaBloqueada() {
+        return cuentaBloqueada;
+    }
+
+    public void setCuentaBloqueada(Boolean cuentaBloqueada) {
+        this.cuentaBloqueada = cuentaBloqueada;
+    }
+
+    public LocalDateTime getFechaBaja() {
+        return fechaBaja;
+    }
+
+    public void setFechaBaja(LocalDateTime fechaBaja) {
+        this.fechaBaja = fechaBaja;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
     }
 
 }
