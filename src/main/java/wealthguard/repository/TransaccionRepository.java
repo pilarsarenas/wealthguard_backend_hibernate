@@ -14,21 +14,22 @@ import wealthguard.entity.TransaccionEntity;
 public interface TransaccionRepository extends JpaRepository<TransaccionEntity, Integer> {
 
     // Busqueda con filtros dinamicos quitando los valores null
-    @Query("SELECT t FROM TransaccionEntity t WHERE t.usuario.id = :idUsuario" +
-            " AND t.fecha BETWEEN :fechaInicio AND :fechaFin " +
+@Query("SELECT t FROM TransaccionEntity t WHERE " +
+            "(:idUsuario IS NULL OR t.usuario.id = :idUsuario) " +
+            "AND (t.fecha BETWEEN :fechaInicio AND :fechaFin) " +
             "AND (:idCategoria IS NULL OR t.categoria.id = :idCategoria) " +
             "AND (:tipo IS NULL OR t.tipoTransaccion = :tipo) " +
             "AND (:cantidad IS NULL OR t.cantidad = :cantidad) " +
             "AND (:descripcion IS NULL OR t.descripcion LIKE LOWER(CONCAT('%', :descripcion, '%')))")
-            List<TransaccionEntity> buscarConFiltros(
-               @Param("idUsuario") Integer idUsuario,
-               @Param("fechaInicio") LocalDateTime fechaInicio,
-               @Param("fechaFin") LocalDateTime fechaFin,
-               @Param("idCategoria") Integer idCategoria,
-               @Param("tipo") Boolean tipo,
-               @Param("cantidad") Double cantidad,
-               @Param("descripcion") String descripcion
-               );
+    List<TransaccionEntity> buscarConFiltros(
+            @Param("idUsuario") Integer idUsuario,
+            @Param("fechaInicio") LocalDateTime fechaInicio,
+            @Param("fechaFin") LocalDateTime fechaFin,
+            @Param("idCategoria") Integer idCategoria,
+            @Param("tipo") Boolean tipo,
+            @Param("cantidad") Double cantidad,
+            @Param("descripcion") String descripcion
+    );
 
             // Busca los gastos agrupados por categoria, se ordenan de mayor a menor
             // Devuelve una lista de array de objetos [0] sera el nombre de la categoria
