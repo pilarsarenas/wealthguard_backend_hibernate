@@ -79,12 +79,15 @@ public class TransaccionServiceImpl implements ITransaccionService {
     public TransaccionResponseDTO editarTransaccion(Integer idTransaccion,
             TransaccionRequestDTO transaccionRequestDTO) {
 
+        // Buscamos la transaccion a editar en la base de datos
         TransaccionEntity transaccionExistente = transaccionRepository.findById(idTransaccion)
                 .orElseThrow(() -> new RuntimeException("Transaccion no encontrada"));
-
+        
+        // Convertimos de DTO a entidad
         TransaccionEntity transaccionActualizada = transaccionMapper.convertirAEntity(transaccionRequestDTO);
         transaccionActualizada.setId(idTransaccion);
 
+        // Guardamos la entidad actualizada en la base de datos
         TransaccionEntity entidadActualizada = transaccionRepository.save(transaccionActualizada);
         return transaccionMapper.convertirADTO(entidadActualizada);
 
@@ -220,6 +223,7 @@ public class TransaccionServiceImpl implements ITransaccionService {
     // Metodo para listar todas las transacciones de un usuario
     @Override
     public List<TransaccionResponseDTO> listarTodasPorUsuario(Integer idUsuario) {
+        
         List<TransaccionEntity> transacciones = transaccionRepository.findByUsuarioId(idUsuario);
         return transacciones.stream()
                 .map(transaccionMapper::convertirADTO)

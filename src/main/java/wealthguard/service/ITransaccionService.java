@@ -30,7 +30,6 @@ public interface ITransaccionService {
     List<TransaccionResponseDTO> listarTransacciones(Integer idUsuario, LocalDateTime fechaInicio,
             LocalDateTime fechaFin, Integer idCategoria, Boolean tipo, Double cantidad, String descripcion);
 
-<<<<<<< HEAD
     /**
      * Recupera el historial completo de transacciones (tanto ingresos como gastos)
      * de un usuario específico sin aplicar ningún límite temporal o de categoría.
@@ -68,16 +67,6 @@ public interface ITransaccionService {
      *
      * @param idTransaccion Identificador único de la transacción a eliminar.
      */
-=======
-    List<TransaccionResponseDTO> listarTransacciones(Integer idUsuario, LocalDateTime fechaInicio, LocalDateTime fechaFin, Integer idCategoria, Boolean tipo, Double cantidad, String descripcion);
-
-    List<TransaccionResponseDTO> listarTodasPorUsuario(Integer idUsuario);
-
-    TransaccionResponseDTO crearTransaccion(TransaccionRequestDTO transaccionRequestDTO);
-
-    TransaccionResponseDTO editarTransaccion(Integer idTransaccion, TransaccionRequestDTO transaccionRequestDTO);
-
->>>>>>> 30486b7cabf03cba95738ebd872b5fd6a9863d09
     void eliminarTransaccion(Integer idTransaccion);
 
     /**
@@ -91,7 +80,6 @@ public interface ITransaccionService {
      */
     double obtenerTendencia(int idUsuario);
 
-<<<<<<< HEAD
     /**
      * Identifica la categoría en la que el usuario ha acumulado un mayor volumen de
      * gastos
@@ -115,10 +103,7 @@ public interface ITransaccionService {
      *         actual acumulada y el índice 1 representa el porcentaje de progreso
      *         logrado hacia la meta.
      */
-=======
-    String[] obtenerCategoriaPrincipal(int idUsuario);
 
->>>>>>> 30486b7cabf03cba95738ebd872b5fd6a9863d09
     double[] obtenerMeta(int idUsuario);
 
 }
