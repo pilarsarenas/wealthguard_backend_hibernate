@@ -63,7 +63,7 @@ public class UsuarioEntity {
     private LocalDateTime fechaBaja;
 
     @Column(name = "activo", nullable = false)
-    private Boolean activo = true;
+    private Boolean activo = false;
 
     public Integer getId() {
         return id;
