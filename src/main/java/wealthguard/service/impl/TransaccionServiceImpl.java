@@ -129,8 +129,7 @@ public class TransaccionServiceImpl implements ITransaccionService {
             balanceAnterior = 0.0;
         }
 
-        // Si el mes anterior era 0, la tendencia es 100% si subio o 0% si bajo o si se
-        // quedo igual
+        // Si el mes anterior era 0, la tendencia es 100% si subio o 0% si bajo o si se quedo igual
         if (balanceAnterior == 0.0) {
             if (balanceActual > 0)
                 return 100.0;
@@ -190,7 +189,7 @@ public class TransaccionServiceImpl implements ITransaccionService {
         // Buscamos las transacciones de la meta actual
         List<TransaccionEntity> transaccionesMeta = transaccionRepository.buscarConFiltros(idUsuario,
                 metaActual.getFechaInicio(),
-                metaActual.getFechaFin(), metaActual.getCategoria().getId(), true, null, null);
+                metaActual.getFechaFin(), metaActual.getCategoria(), true, null, null);
 
         // Si la base de datos nos devolvio transacciones validas, las sumamos
         double progresoActual = 0.0;
@@ -226,7 +225,6 @@ public class TransaccionServiceImpl implements ITransaccionService {
         
         List<TransaccionEntity> transacciones = transaccionRepository.findByUsuarioId(idUsuario);
         return transacciones.stream()
-                .map(transaccionMapper::convertirADTO)
-                .collect(Collectors.toList());
+                .map(transaccionMapper::convertirADTO).toList();
     }
 }
