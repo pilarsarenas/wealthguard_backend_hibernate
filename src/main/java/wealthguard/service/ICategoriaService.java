@@ -2,6 +2,9 @@ package wealthguard.service;
 
 import java.util.List;
 
+import wealthguard.dto.CategoriaRequestDTO;
+import wealthguard.dto.CategoriaResponseDTO;
+
 public interface ICategoriaService {
 
     /**
@@ -10,36 +13,33 @@ public interface ICategoriaService {
      *
      * @param idCategoria ID de la categoría global a eliminar
      * @return true si la eliminación fue exitosa, false si no se encontró la
-     * categoría o es una categoría protegida
+     * categoría
      */
     public boolean eliminarCategoriaGlobal(int idCategoria);
 
     /**
      * Crea una nueva categoría global en el sistema.
      *
-     * @param nombreCategoria Nombre de la nueva categoría global
+     * @param nombreCategoria DTO que contiene el nombre de la categoría global a crear
      * @return true si la creación fue exitosa, false si ya existe una categoría
      * global con el mismo nombre
      */
-    public boolean crearCategoriaGlobal(String nombreCategoria);
+    public CategoriaResponseDTO crearCategoriaGlobal(CategoriaRequestDTO nombreCategoria);
 
     /**
      * Obtiene la lista de categorías globales disponibles en el sistema.
      *
-     * @return Lista de nombres de categorías globales, excluyendo "General" y
-     * "Sin categoría"
+     * @return Lista de nombres de categorías globales
      */
-    public List<String> obtenerCategoriasGlobales();
+    public List<CategoriaResponseDTO> obtenerCategoriasGlobales();
 
     /**
      * Edita el nombre de una categoría global existente.
      *
      * @param idCategoria ID de la categoría global a editar
      * @param nuevoNombre Nuevo nombre para la categoría global
-     * @return true si la edición fue exitosa, false si no se encontró la
-     * categoría, es una categoría protegida o ya existe otra categoría global
-     * con el nuevo nombre
+     * @return El objeto {@link CategoriaResponseDTO} con los datos actualizados de la categoría, o null si no se encontró la categoría
      */
-    public boolean editarCategoriaGlobal(int idCategoria, String nuevoNombre);
+    public CategoriaResponseDTO editarCategoriaGlobal(int idCategoria, CategoriaRequestDTO nuevoNombre);
 
 }
