@@ -31,13 +31,13 @@ public interface ICategoriaService {
      *
      * @return Lista de nombres de categorías globales
      */
-    public List<CategoriaResponseDTO> obtenerCategoriasGlobales();
+    public List<CategoriaResponseDTO> obtenerCategoriasGlobales(Integer usuarioId, String nombreCategoria);
 
     /**
      * Edita el nombre de una categoría global existente.
      *
      * @param idCategoria ID de la categoría global a editar
-     * @param nuevoNombre Nuevo nombre para la categoría global
+     * @param nuevoNombre DTO que contiene el nuevo nombre para la categoría global
      * @return El objeto {@link CategoriaResponseDTO} con los datos actualizados de la categoría, o null si no se encontró la categoría
      */
     public CategoriaResponseDTO editarCategoriaGlobal(int idCategoria, CategoriaRequestDTO nuevoNombre);

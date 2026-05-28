@@ -47,8 +47,10 @@ public class CategoriaServiceImpl implements ICategoriaService {
     }
 
     @Override
-    public List<CategoriaResponseDTO> obtenerCategoriasGlobales() {
-        // Implementación del método para obtener la lista de categorías globales
+    public List<CategoriaResponseDTO> obtenerCategoriasGlobales(Integer usuarioId, String nombreCategoria) {
+        
+        List<CategoriaEntity> categorias = categoriaRepository.findAll(); // Aquí se debería implementar la lógica para filtrar por usuarioId y nombreCategoria
+
         return null; // Placeholder, reemplazar con la lógica real
     }
 

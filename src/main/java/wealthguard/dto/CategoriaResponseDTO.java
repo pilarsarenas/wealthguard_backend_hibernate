@@ -4,6 +4,7 @@ public class CategoriaResponseDTO {
 
     private Integer id;
     private String nombre;
+    private Integer usuarioId;
 
     public CategoriaResponseDTO() {
     }
@@ -24,4 +25,11 @@ public class CategoriaResponseDTO {
         this.nombre = nombre;
     }
 
+    public Integer getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
+    }
 }
