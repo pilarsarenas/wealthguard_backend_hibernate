@@ -1,6 +1,7 @@
 package wealthguard.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -49,9 +50,11 @@ public class CategoriaServiceImpl implements ICategoriaService {
     @Override
     public List<CategoriaResponseDTO> obtenerCategoriasGlobales(Integer usuarioId, String nombreCategoria) {
         
-        List<CategoriaEntity> categorias = categoriaRepository.findAll(); // Aquí se debería implementar la lógica para filtrar por usuarioId y nombreCategoria
+        List<CategoriaEntity> categorias = categoriaRepository.buscarConFiltro(usuarioId, nombreCategoria);
 
-        return null; // Placeholder, reemplazar con la lógica real
+        return categorias.stream()
+                .map(categoria -> categoriaMapper.convertirADTO(categoria))
+                .collect(Collectors.toList());
     }
 
     @Override
