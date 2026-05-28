@@ -30,6 +30,7 @@ public class CategoriaMapper {
 
         categoriaResponseDTO.setId(categoriaEntity.getId());
         categoriaResponseDTO.setNombre(categoriaEntity.getNombre());
+        categoriaResponseDTO.setUsuarioId(categoriaEntity.getUsuarioId());
 
         return categoriaResponseDTO;
     }

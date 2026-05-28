@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,6 +19,10 @@ public class CategoriaEntity {
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = true)
+    private Integer usuarioId;   // Permite null para categorías globales
 
     public Integer getId() {
         return id;
@@ -32,6 +38,14 @@ public class CategoriaEntity {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Integer getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
     
 
