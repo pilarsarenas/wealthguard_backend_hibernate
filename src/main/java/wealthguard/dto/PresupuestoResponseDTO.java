@@ -1,40 +1,21 @@
-package wealthguard.entity;
+package wealthguard.dto;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import wealthguard.entity.CategoriaEntity;
+import wealthguard.entity.UsuarioEntity;
 
-@Entity
-@Table(name = "presupuesto")
-public class PresupuestoEntity {
+public class PresupuestoResponseDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
     private UsuarioEntity usuario;
-
-     @ManyToOne
-    @JoinColumn(name = "categoria_id", nullable = false)
     private CategoriaEntity categoria;
-
-     @Column(name = "limite", nullable = false)
     private double limite;
-
-        @Column(name = "fecha_inicio", nullable = false)
     private LocalDateTime fechaInicio;
-
-    @Column(name = "fecha_fin", nullable = false)
     private LocalDateTime fechaFin;
+
+    public PresupuestoResponseDTO() {
+    }
 
     public Integer getId() {
         return id;
@@ -83,7 +64,5 @@ public class PresupuestoEntity {
     public void setFechaFin(LocalDateTime fechaFin) {
         this.fechaFin = fechaFin;
     }
-
-    
 
 }
