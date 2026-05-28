@@ -9,8 +9,9 @@ import wealthguard.dto.CategoriaResponseDTO;
 import wealthguard.entity.CategoriaEntity;
 import wealthguard.mapper.CategoriaMapper;
 import wealthguard.repository.CategoriaRepository;
+import wealthguard.service.ICategoriaService;
 
-public class CategoriaServiceImpl {
+public class CategoriaServiceImpl implements ICategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
@@ -18,6 +19,7 @@ public class CategoriaServiceImpl {
     @Autowired
     private CategoriaMapper categoriaMapper;
 
+    @Override
     public boolean eliminarCategoriaGlobal(int idCategoria) {
 
         if (categoriaRepository.existsById(idCategoria)) {
@@ -30,6 +32,7 @@ public class CategoriaServiceImpl {
         }
     }
 
+    @Override
     public CategoriaResponseDTO crearCategoriaGlobal(CategoriaRequestDTO nombreCategoria) {
 
         CategoriaEntity categoriaEntidad = categoriaMapper.convertirAEntity(nombreCategoria);
@@ -40,17 +43,29 @@ public class CategoriaServiceImpl {
             CategoriaEntity categoriaGuardada = categoriaRepository.save(categoriaEntidad);
             return categoriaMapper.convertirADTO(categoriaGuardada); // Retorna el DTO de la categoría creada
         }
-        
+
     }
 
+    @Override
     public List<CategoriaResponseDTO> obtenerCategoriasGlobales() {
         // Implementación del método para obtener la lista de categorías globales
         return null; // Placeholder, reemplazar con la lógica real
     }
 
-    public CategoriaResponseDTO editarCategoriaGlobal(int idCategoria, String nuevoNombre) {
-        // Implementación del método para editar el nombre de una categoría global existente
-        return null; // Placeholder, reemplazar con la lógica real
+    @Override
+    public CategoriaResponseDTO editarCategoriaGlobal(int idCategoria, CategoriaRequestDTO categoriaRequest) {
+        
+        CategoriaEntity categoriaEntidad = categoriaRepository.findById(idCategoria).orElseThrow(() -> new RuntimeException("Categoría no encontrada"));
+
+        CategoriaEntity categoriaActualizada = categoriaMapper.convertirAEntity(categoriaRequest);
+        categoriaActualizada.setId(categoriaEntidad.getId()); // Aseguramos que el ID se mantenga
+
+        if (categoriaRepository.existsByNombre(categoriaActualizada.getNombre())) {
+            return null; // Ya existe una categoría global con el mismo nombre
+        } else {
+            CategoriaEntity categoriaGuardada = categoriaRepository.save(categoriaActualizada);
+            return categoriaMapper.convertirADTO(categoriaGuardada); // Retorna el DTO de la categoría actualizada
+        }
     }
 
 }
