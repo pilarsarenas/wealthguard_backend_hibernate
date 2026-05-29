@@ -34,6 +34,7 @@ public class PresupuestoMapper {
 
         PresupuestoResponseDTO presupuestoResponseDTO = new PresupuestoResponseDTO();
 
+        presupuestoResponseDTO.setId(presupuestoEntity.getId()); 
         presupuestoResponseDTO.setUsuario(presupuestoEntity.getUsuario());
         presupuestoResponseDTO.setCategoria(presupuestoEntity.getCategoria());
         presupuestoResponseDTO.setLimite(presupuestoEntity.getLimite());

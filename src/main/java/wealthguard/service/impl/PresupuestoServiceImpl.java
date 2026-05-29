@@ -1,5 +1,6 @@
 package wealthguard.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,6 +59,26 @@ public class PresupuestoServiceImpl implements IPresupuestoService {
         return presupuestos.stream()
                 .map(presupuestoMapper::convertirADTO)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PresupuestoResponseDTO> obtenerPorCategoria(int idCategoria) {
+        return presupuestoRepository.findByCategoriaId(idCategoria)
+                .stream().map(presupuestoMapper::convertirADTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PresupuestoResponseDTO> obtenerPresupuestosActivos(int idUsuario) {
+        LocalDateTime ahora = LocalDateTime.now();
+        return presupuestoRepository
+                .findByUsuarioIdAndFechaInicioBeforeAndFechaFinAfter(idUsuario, ahora, ahora)
+                .stream().map(presupuestoMapper::convertirADTO).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PresupuestoResponseDTO> obtenerPorUsuarioYCategoria(int idUsuario, int idCategoria) {
+        return presupuestoRepository.findByUsuarioIdAndCategoriaId(idUsuario, idCategoria)
+                .stream().map(presupuestoMapper::convertirADTO).collect(Collectors.toList());
     }
 
 }

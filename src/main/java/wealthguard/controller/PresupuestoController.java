@@ -51,4 +51,24 @@ public class PresupuestoController {
         return ResponseEntity.ok(presupuestos);
     }
 
+    @GetMapping("/categoria/{idCategoria}")
+    public ResponseEntity<List<PresupuestoResponseDTO>> obtenerPorCategoria(@PathVariable int idCategoria) {
+        List<PresupuestoResponseDTO> presupuestos = presupuestoService.obtenerPorCategoria(idCategoria);
+        return ResponseEntity.ok(presupuestos);
+    }
+
+    @GetMapping("/usuario/{idUsuario}/activos")
+    public ResponseEntity<List<PresupuestoResponseDTO>> obtenerActivos(@PathVariable int idUsuario) {
+        List<PresupuestoResponseDTO> presupuestos = presupuestoService.obtenerPresupuestosActivos(idUsuario);
+        return ResponseEntity.ok(presupuestos);
+    }
+
+    @GetMapping("/usuario/{idUsuario}/categoria/{idCategoria}")
+    public ResponseEntity<List<PresupuestoResponseDTO>> obtenerPorUsuarioYCategoria(
+            @PathVariable int idUsuario,
+            @PathVariable int idCategoria) {
+        List<PresupuestoResponseDTO> presupuestos = presupuestoService.obtenerPorUsuarioYCategoria(idUsuario, idCategoria);
+        return ResponseEntity.ok(presupuestos);
+    }
+
 }
