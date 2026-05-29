@@ -9,35 +9,32 @@ import wealthguard.entity.RecomendacionEntity;
 @Component
 public class RecomendacionMapper {
 
-    // Metodo para convertir lo que llega del frontend en una entidad para la base
-    // de datos
-    public RecomendacionEntity convertirAEntity(RecomendacionRequestDTO dto) {
-        if (dto == null) {
+    public RecomendacionEntity convertirAEntity(RecomendacionRequestDTO recomendacionRequestDTO) {
+        if (recomendacionRequestDTO == null) {
             return null;
         }
 
-        RecomendacionEntity entity = new RecomendacionEntity();
+        RecomendacionEntity recomendacionEntity = new RecomendacionEntity();
 
-        entity.setUsuario(dto.getUsuario());
-        entity.setTipoRecomendacion(dto.getTipoRecomendacion());
-        entity.setFechaRecomendacion(dto.getFechaRecomendacion());
-        return entity;
+        recomendacionEntity.setUsuario(recomendacionRequestDTO.getUsuario());
+        recomendacionEntity.setTipoRecomendacion(recomendacionRequestDTO.getTipoRecomendacion());
+        recomendacionEntity.setFechaRecomendacion(recomendacionRequestDTO.getFechaRecomendacion());
+        return recomendacionEntity;
 
     }
 
-    // Metodo para convertir lo que sale de la base de datos a DTO para el frontend
-    public RecomendacionResponseDTO convertirADTO(RecomendacionEntity entity) {
-        if (entity == null) {
+    public RecomendacionResponseDTO convertirADTO(RecomendacionEntity recomendacionEntity) {
+        if (recomendacionEntity == null) {
             return null;
         }
 
-        RecomendacionResponseDTO dto = new RecomendacionResponseDTO();
+        RecomendacionResponseDTO recomendacionDTO = new RecomendacionResponseDTO();
 
-        dto.setId(entity.getId());
-        dto.setUsuario(entity.getUsuario());
-        dto.setTipoRecomendacion(entity.getTipoRecomendacion());
-        dto.setFechaRecomendacion(entity.getFechaRecomendacion());
-        return dto;
+        recomendacionDTO.setId(recomendacionEntity.getId());
+        recomendacionDTO.setUsuario(recomendacionEntity.getUsuario());
+        recomendacionDTO.setTipoRecomendacion(recomendacionEntity.getTipoRecomendacion());
+        recomendacionDTO.setFechaRecomendacion(recomendacionEntity.getFechaRecomendacion());
+        return recomendacionDTO;
 
     }
 
