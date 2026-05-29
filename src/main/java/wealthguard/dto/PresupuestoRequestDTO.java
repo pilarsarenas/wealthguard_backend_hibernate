@@ -14,9 +14,6 @@ public class PresupuestoRequestDTO {
     private LocalDateTime fechaFin;
 
 
-    public PresupuestoRequestDTO() {
-    }
-
     public UsuarioEntity getUsuario() {
         return usuario;
     }
