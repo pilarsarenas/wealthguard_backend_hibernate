@@ -16,6 +16,7 @@ public interface ObjetivoRepository extends JpaRepository<ObjetivoEntity, Intege
     @Query("SELECT o FROM ObjetivoEntity o WHERE o.usuario.id = :idUsuario AND o.completado = false")
     List<ObjetivoEntity> buscarObjetivosActivosPorUsuario(@Param("idUsuario") Integer idUsuario);
 
+    
 
 }
 

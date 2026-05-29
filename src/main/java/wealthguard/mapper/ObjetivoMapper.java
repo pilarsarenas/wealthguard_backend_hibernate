@@ -3,6 +3,7 @@ package wealthguard.mapper;
 import org.springframework.stereotype.Component;
 
 import wealthguard.dto.ObjetivoRequestDTO;
+import wealthguard.dto.ObjetivoResponseDTO;
 import wealthguard.entity.ObjetivoEntity;
 
 @Component
@@ -15,7 +16,7 @@ public class ObjetivoMapper {
 
         ObjetivoEntity objetivoEntity = new ObjetivoEntity();
         
-        objetivoEntity.setUsuario(objetivoRequestDTO.getUsuarioId());
+        objetivoEntity.setUsuarioId(objetivoRequestDTO.getUsuarioId());
         objetivoEntity.setCantidadObjetivo(objetivoRequestDTO.getCantidadObjetivo());
         objetivoEntity.setCategoriaId(objetivoRequestDTO.getCategoriaId());
         objetivoEntity.setFechaInicio(objetivoRequestDTO.getFechaInicio());
@@ -25,21 +26,21 @@ public class ObjetivoMapper {
         return objetivoEntity;
     }
 
-    public ObjetivoRequestDTO convertirADTO (ObjetivoEntity objetivoEntity){
+    public ObjetivoResponseDTO convertirADTO (ObjetivoEntity objetivoEntity){
         if (objetivoEntity == null) {
             return null;
         }
 
-        ObjetivoRequestDTO objetivoRequestDTO = new ObjetivoRequestDTO();
+        ObjetivoResponseDTO objetivoResponseDTO = new ObjetivoResponseDTO();
 
-        objetivoRequestDTO.setUsuarioId(objetivoEntity.getUsuario());
-        objetivoRequestDTO.setCantidadObjetivo(objetivoEntity.getCantidadObjetivo());
-        objetivoRequestDTO.setCategoriaId(objetivoEntity.getCategoria());
-        objetivoRequestDTO.setFechaInicio(objetivoEntity.getFechaInicio());
-        objetivoRequestDTO.setFechaFin(objetivoEntity.getFechaFin());
-        objetivoRequestDTO.setCompletado(objetivoEntity.getCompletado());
+        objetivoResponseDTO.setUsuarioId(objetivoEntity.getUsuarioId());
+        objetivoResponseDTO.setCantidadObjetivo(objetivoEntity.getCantidadObjetivo());
+        objetivoResponseDTO.setCategoriaId(objetivoEntity.getCategoria());
+        objetivoResponseDTO.setFechaInicio(objetivoEntity.getFechaInicio());
+        objetivoResponseDTO.setFechaFin(objetivoEntity.getFechaFin());
+        objetivoResponseDTO.setCompletado(objetivoEntity.getCompletado());
 
-        return objetivoRequestDTO;
+        return objetivoResponseDTO;
     }
 
 }

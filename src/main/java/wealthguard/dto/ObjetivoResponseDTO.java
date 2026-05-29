@@ -1,13 +1,16 @@
 package wealthguard.dto;
 
+import java.time.LocalDateTime;
+
 public class ObjetivoResponseDTO {
 
     private Integer id;
+    private Integer usuarioId;
     private String nombre;
     private Double cantidadObjetivo;
     private Integer categoriaId;
-    private String fechaInicio;
-    private String fechaFin;
+    private LocalDateTime fechaInicio;
+    private LocalDateTime fechaFin;
     private Boolean completado;
 
     public ObjetivoResponseDTO() {
@@ -19,6 +22,14 @@ public class ObjetivoResponseDTO {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
     public String getNombre() {
@@ -45,19 +56,19 @@ public class ObjetivoResponseDTO {
         this.categoriaId = categoriaId;
     }
 
-    public String getFechaInicio() {
+    public LocalDateTime getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(String fechaInicio) {
+    public void setFechaInicio(LocalDateTime fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public String getFechaFin() {
+    public LocalDateTime getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(String fechaFin) {
+    public void setFechaFin(LocalDateTime fechaFin) {
         this.fechaFin = fechaFin;
     }
 

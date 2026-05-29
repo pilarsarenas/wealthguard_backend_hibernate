@@ -1,8 +1,9 @@
 package wealthguard.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
+import wealthguard.dto.ObjetivoRequestDTO;
+import wealthguard.dto.ObjetivoResponseDTO;
 import wealthguard.entity.ObjetivoEntity;
 
 public interface IObjetivoService {
@@ -13,15 +14,10 @@ public interface IObjetivoService {
      * fecha de inicio y fecha de fin. El campo "completado" se establece
      * inicialmente en false.
      *
-     * @param idUsuario ID del usuario al que pertenece el objetivo
-     * @param idCategoria ID de la categoría asociada al objetivo
-     * @param nombreObjetivo Nombre descriptivo del objetivo
-     * @param cantidadoObjetivo Monto financiero que se desea alcanzar
-     * @param fechaInicio Fecha y hora de inicio del objetivo
-     * @param fechaFin Fecha y hora de fin del objetivo
-     * @return
+     * @param objetivoRequestDTO Objeto que contiene los datos necesarios para crear el objetivo, incluyendo el ID del usuario, ID de la categoría, nombre del objetivo, monto objetivo, fecha de inicio y fecha de fin.
+     * @return El objeto ObjetivoResponseDTO con los datos del objetivo creado, incluyendo su ID generado y el estado de completado inicial.
      */
-    public boolean crearObjetivo(int idUsuario, int idCategoria, String nombreObjetivo, double cantidadoObjetivo, LocalDateTime fechaInicio, LocalDateTime fechaFin, Boolean completado);
+    public ObjetivoResponseDTO crearObjetivo(ObjetivoRequestDTO objetivoRequestDTO);
 
     /**
      * Elimina un objetivo financiero existente por su ID. Solo se puede
@@ -31,7 +27,7 @@ public interface IObjetivoService {
      * @return true si la eliminación fue exitosa, false si no se encontró el
      * objetivo o no pertenece al usuario
      */
-    public boolean eliminarObjetivo(int idObjetivo);
+    public boolean eliminarObjetivo(Integer idObjetivo);
 
     /**
      * Edita un objetivo financiero existente. Solo se puede editar un objetivo
@@ -39,17 +35,11 @@ public interface IObjetivoService {
      * campos del objetivo, incluyendo el nombre, monto, fechas y estado de
      * completado.
      *
-     * @param idObjetivo ID del objetivo a editar
-     * @param idCategoria ID de la nueva categoría asociada al objetivo
-     * @param nombreObjetivo Nuevo nombre descriptivo del objetivo
-     * @param cantidadoObjetivo Nuevo monto financiero que se desea alcanzar
-     * @param fechaInicio Nueva fecha y hora de inicio del objetivo
-     * @param fechaFin Nueva fecha y hora de fin del objetivo
-     * @param completado Nuevo estado de completado del objetivo
+     * @param objetivoRequestDTO Objeto que contiene los datos actualizados del objetivo, incluyendo su ID, ID del usuario, ID de la categoría, nombre del objetivo, monto objetivo, fecha de inicio, fecha de fin y estado de completado.
      * @return true si la edición fue exitosa, false si no se encontró el
      * objetivo o no pertenece al usuario
      */
-    public boolean editarObjetivo(int idObjetivo, int idCategoria, String nombreObjetivo, double cantidadoObjetivo, LocalDateTime fechaInicio, LocalDateTime fechaFin, Boolean completado);
+    public ObjetivoResponseDTO editarObjetivo(int idObjetivo, ObjetivoRequestDTO objetivoRequestDTO);
 
     /**
      * Obtiene la lista de objetivos financieros del usuario especificado. Cada
@@ -59,7 +49,7 @@ public interface IObjetivoService {
      * @param idUsuario ID del usuario
      * @return Lista de ObjetivoEntity que pertenecen al usuario
      */
-    public List<ObjetivoEntity> obtenerObjetivos(int idUsuario);
+    public List<ObjetivoEntity> obtenerObjetivos(Integer idUsuario);
 
     /**
      * Cambia el estado de completado de un objetivo financiero. Solo se puede
@@ -70,6 +60,6 @@ public interface IObjetivoService {
      * @return true si la actualización fue exitosa, false si no se encontró el
      * objetivo o no pertenece al usuario
      */
-    public boolean cambiarEstadoCompletado(int idObjetivo, Boolean completado);
+    public boolean cambiarEstadoCompletado(Integer idObjetivo, Boolean completado);
 
 }

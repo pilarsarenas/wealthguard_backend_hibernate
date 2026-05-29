@@ -8,7 +8,6 @@ public class ScoreFinancieroMapper {
         if (dto == null) return null;
         
         ScoreFinancieroEntity entity = new ScoreFinancieroEntity();
-        entity.setId(dto.getId());
         entity.setUsuario(dto.getUsuario());
         entity.setValorMaximo(dto.getValorMaximo());
         entity.setNivel(dto.getNivel());

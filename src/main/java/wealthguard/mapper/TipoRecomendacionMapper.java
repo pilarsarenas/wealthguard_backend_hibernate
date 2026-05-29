@@ -8,7 +8,6 @@ public class TipoRecomendacionMapper {
         if (dto == null) return null;
         
         TipoRecomendacionEntity entity = new TipoRecomendacionEntity();
-        entity.setId(dto.getId());
         entity.setNombre(dto.getNombre());
         entity.setMensaje(dto.getMensaje());
         return entity;
