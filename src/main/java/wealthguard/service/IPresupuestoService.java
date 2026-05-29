@@ -44,4 +44,6 @@ public interface IPresupuestoService {
   public List<PresupuestoResponseDTO> obtenerPresupuestosActivos(int idUsuario);
 
   public List<PresupuestoResponseDTO> obtenerPorUsuarioYCategoria(int idUsuario, int idCategoria);
+
+   List<PresupuestoResponseDTO> buscarConFiltro(Integer idUsuario, Integer idCategoria);
 }

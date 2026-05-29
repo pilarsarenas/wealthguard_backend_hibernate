@@ -81,4 +81,10 @@ public class PresupuestoServiceImpl implements IPresupuestoService {
                 .stream().map(presupuestoMapper::convertirADTO).collect(Collectors.toList());
     }
 
+     @Override
+    public List<PresupuestoResponseDTO> buscarConFiltro(Integer idUsuario, Integer idCategoria) {
+        return presupuestoRepository.buscarConFiltro(idUsuario, idCategoria)
+                .stream().map(presupuestoMapper::convertirADTO).collect(Collectors.toList());
+    }
+
 }

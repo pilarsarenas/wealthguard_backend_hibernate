@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import wealthguard.dto.PresupuestoRequestDTO;
@@ -47,28 +48,32 @@ public class PresupuestoController {
 
     @GetMapping("/usuario/{idUsuario}")
     public ResponseEntity<List<PresupuestoResponseDTO>> obtenerPresupuestos(@PathVariable int idUsuario) {
-        List<PresupuestoResponseDTO> presupuestos = presupuestoService.obtenerPresupuestos(idUsuario);
-        return ResponseEntity.ok(presupuestos);
+        return ResponseEntity.ok(presupuestoService.obtenerPresupuestos(idUsuario));
     }
 
     @GetMapping("/categoria/{idCategoria}")
     public ResponseEntity<List<PresupuestoResponseDTO>> obtenerPorCategoria(@PathVariable int idCategoria) {
-        List<PresupuestoResponseDTO> presupuestos = presupuestoService.obtenerPorCategoria(idCategoria);
-        return ResponseEntity.ok(presupuestos);
+        return ResponseEntity.ok(presupuestoService.obtenerPorCategoria(idCategoria));
     }
 
     @GetMapping("/usuario/{idUsuario}/activos")
     public ResponseEntity<List<PresupuestoResponseDTO>> obtenerActivos(@PathVariable int idUsuario) {
-        List<PresupuestoResponseDTO> presupuestos = presupuestoService.obtenerPresupuestosActivos(idUsuario);
-        return ResponseEntity.ok(presupuestos);
+        return ResponseEntity.ok(presupuestoService.obtenerPresupuestosActivos(idUsuario));
     }
 
     @GetMapping("/usuario/{idUsuario}/categoria/{idCategoria}")
     public ResponseEntity<List<PresupuestoResponseDTO>> obtenerPorUsuarioYCategoria(
             @PathVariable int idUsuario,
             @PathVariable int idCategoria) {
-        List<PresupuestoResponseDTO> presupuestos = presupuestoService.obtenerPorUsuarioYCategoria(idUsuario, idCategoria);
-        return ResponseEntity.ok(presupuestos);
+        return ResponseEntity.ok(presupuestoService.obtenerPorUsuarioYCategoria(idUsuario, idCategoria));
+    }
+
+    // Nuevo: filtro dinámico con parámetros opcionales PREGUNTAR
+    @GetMapping("/filtro")
+    public ResponseEntity<List<PresupuestoResponseDTO>> buscarConFiltro(
+            @RequestParam(required = false) Integer idUsuario,
+            @RequestParam(required = false) Integer idCategoria) {
+        return ResponseEntity.ok(presupuestoService.buscarConFiltro(idUsuario, idCategoria));
     }
 
 }
