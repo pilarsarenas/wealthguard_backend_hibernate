@@ -1,7 +1,11 @@
 package wealthguard.mapper;
+import org.springframework.stereotype.Component;
+
 import wealthguard.dto.ScoreFinancieroRequestDTO;
 import wealthguard.dto.ScoreFinancieroResponseDTO;
 import wealthguard.entity.ScoreFinancieroEntity;
+
+@Component
 public class ScoreFinancieroMapper {
 
     public static ScoreFinancieroEntity toEntity(ScoreFinancieroRequestDTO dto) {
@@ -15,7 +19,7 @@ public class ScoreFinancieroMapper {
         return entity;
     }
 
-    public static ScoreFinancieroResponseDTO toResponseDTO(ScoreFinancieroEntity entity) {
+    public static ScoreFinancieroResponseDTO convertirADTO(ScoreFinancieroEntity entity) {
         if (entity == null) return null;
         
         ScoreFinancieroResponseDTO dto = new ScoreFinancieroResponseDTO();
